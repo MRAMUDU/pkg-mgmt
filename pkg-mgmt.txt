@@ -16,4 +16,44 @@ Yum clean--------clear out catched pkg data
 Yum history --------To view history of yum
 To list all available group pkg
 Yum grouplist/groupinstall/groupremove/groupupdate/groupinfo <grp pkgname>
+Interactive yum Shell:- yum provides a custom shell where can run multiple yum commands
+Eg:-
+Yum shell
+>install vsftpd
+>remove httpd
+>update openssh
+>run
+>exit
+Enable Repo:-
+Yum –enablerepo=repoid <pkgname>
+Eg:- Yum –enablerepo=rhel7local  install httpd
+Note:-if you don’t want update certain packages we can exclude/disable certain packages update from any repository
+Syntax:- exclude=pkgname1 pkgname2 pkgname4
+Eg:-
+ vim /etc/yum.conf
+ exclude=httpd vsftpd openssh
+:wq
+Vim /etc/yum.repos.d/local.repo
+exclude=httpd vsftpd openssh
+:wq
+Note:- we can also use yum command line option to exclude pkgs without adding to repository config file
+Yum –exclude=pkgname
+Eg:- yum –exclude=httpd update
+If you want excludemultiple pkgs
+Yum –exclude=httpd –exclude=vsftpd –exclude=openssh
+Yum –exclude=httpd,vsftpd.openssh
+To disable pkgs temporarly for install/update
+Yum –x httpd update
+Yum –x httpd openssh vsftpd update-----multiple pkgs
+To disable/ignore a pkg from exclude list and continue to update/install
+Yum –disableexclude=httpd update
+Yum –disablexclude=all update   (all means disable all exclude)
+Yum –disableexclude=main install python
+Yum –disableexclude=repoid update
+Eg:- yum –disableexclude=rhel7local update  
+ Repository Servers & websites:-
+Official repositories:- centos,redhat, fedora
+3rd party repositories:- rpmfind.net, pkgs.org, rpmforce, rpmfusion, epel, remi
+Epel----extra package for enterprise linux
+Yum install epel-release
 

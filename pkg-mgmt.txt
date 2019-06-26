@@ -38,4 +38,23 @@ Options:
 -qa --last ------ list all recently installed rpm pkgs
 --force ----installed/upgrade forcefully
 -- nodeps--- skip to check dependencies
+Note: - To rebuild rpm data base get currecpted
+First start by backing up your current RPM database before proceeding
+Challenges:-
+•	rpm command terminates with “cannot open Packages database in /var/lib/rpm”
+•	rpmdb: Lock table is out of available locker entries
+•	rpmdb: /var/lib/rpm/Packages: unexpected file type or format
+error: cannot open Packages index using db3 – Invalid argument (22)
+•	error: rpmdbNextIterator: skipping h# 1601 Header V4 RSA/SHA1 signature: BAD, key ID 2142eef7
+Method 1:-
+Cd /var/lib/rpm
+rm -rf  _ _db*
+rpm –rebuilddb
+rpmdb_verify Packages (or)
+/usr/lib/rpm/rpmdb_verify /var/lib/rpm/Packages
+Method 2:- If you are still getting errors
+# mv Packages Packages-BAKUP
+# db_dump Packages-BAKUP | db_load Packages
+# rpm -qa
+# rpm --rebuilddb
 

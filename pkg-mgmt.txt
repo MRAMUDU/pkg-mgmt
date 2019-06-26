@@ -57,4 +57,30 @@ Method 2:- If you are still getting errors
 # db_dump Packages-BAKUP | db_load Packages
 # rpm -qa
 # rpm --rebuilddb
+YUM:- yellowdog  updater modifier
+It is advanced of rpm, it install packages automactically by resolving their dependencies issues
+Create RPM Repository
+Repsitory:- it is storage location from which your system retrives softwares install, update, search and is a collection of software hosted on a remote server
+Download/Copy all rpm’s from installation source (iso image/DVD)
+Mount  /dev/sr0 /mnt
+mkdir /rhel7rpm
+cp -rv /mnt/packages/* /rhel7rpm
+cd /rhel7rpm
+ls | wc –l
+createrepo -v . (. :- cwd)
+rpm –ivh createrepo---------(Tab)
+rpm –ivh deltarpm----------
+rpm –ivh python-deltarpm--------
+createrepo -v .
+Note:- if createrepo command not found than install createrepo rpm pkg
+Create repo database
+Create repo config file under:- /etc/yum.repos.d/
+Cd /etc/yum.repos.d/
+Vim local.repo
+[rhel7rpm]
+Name = rhel7 rpm’s
+Baseurl = file:///rhel7rpm
+enabled = 1
+gpgcheck = 0
+:wq!
 

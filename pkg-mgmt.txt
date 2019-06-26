@@ -38,4 +38,22 @@ Options:
 -qa --last ------ list all recently installed rpm pkgs
 --force ----installed/upgrade forcefully
 -- nodeps--- skip to check dependencies
+Commands:-
+Yum repoinfo <repo name>---------Display info about yum repository
+Yum repolist ---To check list available only enable repositories
+Yum repolist all------it shows both enable and disable repo
+Yum list----------- To check list available only enable packages
+Yum list all-------- To check list available both enable and disable packages
+Yum list/search/install/remove/erase/update/check-update/upgrade/downgrade/swap/reinstall/localinstall/deplist(diplay dependencies  <pkgname>  -y/n(yes/no)
+Yum info <pkgname>-------To check  info about rpm pkge
+Yum list installed----------To check all installed rpm pkgs
+Yum provides <pkgname>------
+To know a file belongs to which rpm pkgs
+Eg:- yum provide /etc/passwd
+Note:-Bydefault yum keeps all the repository enabled pkg data in /var/cache/yum/ directory with sub dir, to clean all catched file from enaled repository run.
+Yum clean all--------clear out all pkg from meta data from cache
+Yum clean--------clear out catched pkg data
+Yum history --------To view history of yum
+To list all available group pkg
+Yum grouplist/groupinstall/groupremove/groupupdate/groupinfo <grp pkgname>
 
